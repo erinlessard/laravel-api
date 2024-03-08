@@ -19,7 +19,17 @@ This project makes use of [Laravel Sail.](https://laravel.com/docs/10.x/sail)
 
 See [https://laravel.com/docs/10.x/installation#docker-installation-using-sail](https://laravel.com/docs/10.x/installation#docker-installation-using-sail) for official Laravel instructions and troubleshooting.
 
-After setting up docker and ensuring the host machine can run docker containers, change to the project directory and execute a composer install through Docker to install Sail:
+After setting up docker and ensuring the host machine can run docker containers, change to the project directory do the following:
+
+Copy the .env file
+```
+cp .env.example .env
+```
+Make minor changes to .env for Laravel Sail:
+```
+DB_HOST=mysql
+```
+Execute a composer install through Docker to install Sail:
 ```
 docker run --rm \
     -u "$(id -u):$(id -g)" \
@@ -28,12 +38,6 @@ docker run --rm \
     laravelsail/php83-composer:latest \
     composer install --ignore-platform-reqs
 ```
-
-Afterwards, copy the .env file and make any changes
-```
-cp .env.example .env
-```
-
 Finally, run migrations
 ```
 vendor/bin/sail artisan migrate
@@ -50,6 +54,10 @@ vendor/bin/sail
 To run tests:
 ```
 vendor/bin/sail test
+```
+Running workers if using a queue driver that isn't Sync (such as Redis):
+```
+vendor/bin/sail artisan queue:work
 ```
 
 ## API Endpoints
