@@ -19,8 +19,6 @@ This project makes use of [Laravel Sail.](https://laravel.com/docs/10.x/sail)
 
 See [https://laravel.com/docs/10.x/installation#docker-installation-using-sail](https://laravel.com/docs/10.x/installation#docker-installation-using-sail) for official Laravel instructions and troubleshooting.
 
----
-
 After setting up docker and ensuring the host machine can run docker containers, change to the project directory and execute a composer install through Docker to install Sail:
 ```
 docker run --rm \
@@ -56,8 +54,6 @@ vendor/bin/sail test
 
 ## API Endpoints
 
----
-
 ```
 POST /api/jobs
 ```
@@ -79,10 +75,13 @@ Example JSON:
     ]
 }
 ```
+
 Returns 200 containing ULID of new Job if successful
 
-Example Response:
-`01hre7sx0rwqv2fwqn3stg66g6`
+Example Response: 
+```
+01hre7sx0rwqv2fwqn3stg66g6
+```
 ---
 
 ```
